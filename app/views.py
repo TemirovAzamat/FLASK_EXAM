@@ -88,7 +88,7 @@ def register():
                 flash('Такой пользователь уже есть', 'danger')
             else:
                 flash('Вы успешно зарегистрировались!', 'success')
-                return redirect(url_for('login'))
+                return redirect(url_for('index'))
     return render_template('user_form.html', form=form, title=title)
 
 
@@ -107,4 +107,4 @@ def login():
 
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))

@@ -6,9 +6,13 @@ from .models import Position
 
 
 class PositionForm(FlaskForm):
-    name = wf.StringField(label='Ваша должность')
-    department = wf.StringField(label='Ваш отдел')
-    wage = wf.IntegerField(label='Заработная плата')
+    name = wf.StringField(label='Должность', validators=[
+        wf.validators.DataRequired()
+    ])
+    department = wf.StringField(label='Отдел')
+    wage = wf.IntegerField(label='Заработная плата', validators=[
+        wf.validators.DataRequired()
+    ])
 
     def validate_wage(self, field):
         if field.data < 0:
@@ -25,11 +29,16 @@ def get_positions():
 
 
 class EmployeeForm(FlaskForm):
-    name = wf.StringField(label='Ваше имя')
+    name = wf.StringField(label='Ваше имя', validators=[
+        wf.validators.DataRequired()
+    ])
     inn = wf.StringField(label='Ваш ИНН', validators=[
+        wf.validators.DataRequired(),
         wf.validators.Length(min=14, max=14)
     ])
-    position_id = wf.SelectField(label='Ваша позиция', choices=[])
+    position_id = wf.SelectField(label='Ваша позиция', choices=[], validators=[
+        wf.validators.DataRequired()
+    ])
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

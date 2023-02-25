@@ -10,15 +10,15 @@ def load_user(id):
 
 class Position(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String)
     department = db.Column(db.String)
-    wage = db.Column(db.Integer, nullable=False)
+    wage = db.Column(db.Integer)
 
 
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    inn = db.Column(db.String, nullable=False)
+    name = db.Column(db.String)
+    inn = db.Column(db.String)
     position_id = db.Column(db.Integer, db.ForeignKey('position.id'))
     position = db.relationship('Position', backref=db.backref('items', lazy='dynamic'))
 
