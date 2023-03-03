@@ -22,7 +22,7 @@
             <a class="nav-link" href="{{ url_for('position_create') }}">Add position</a>
           </li>
           <li class="nav-item">
-            <b class="nav-link">{% if current_user.is_authenticated %} Account: {{ current_user.username }} {% endif %}</b>
+            <b class="nav-link">{% if current_user.is_authenticated %} Welcome, {{ current_user.username }} {% endif %}</b>
           </li>
         </ul>
         <span class="navbar-text">
